@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        
+        body{
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #form-container{
+            background-color: white;
+            text-align: center;
+            padding: 50px;
+            justify-content: center;
+        }
+        h2{
+            margin: 0px 0px 10px 0px;
+        }
+        input{
+            width: 200px;
+            height: 10px 0px;
+            padding: 10px;
+        }
+        input[type="submit"]{
+            width: 220px;
+            background-color: #3498db;
+            border: 0px;
+            color: white;
+        }
+        .error{
+            color: red;
+            margin: 0px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="form-container">
+        <h2>Login</h2>
+        <form action="" onsubmit= "return ValiditeForm()">
+            <input type="text" placeholder="User Name" id="username"><br><br>
+            <p id="userError" class="error"></p>
+
+            <input type="password" placeholder="Enter your password" id="password"><br><br>
+            <i class="fa-solid fa-eye-slash"></i>        
+            <p id="passError" class="error"></p>
+        
+            <input type="submit">
+        </form>
+    </div>
+
+    <script>
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        let flag = 1;
+
+        function ValiditeForm(){
+            if(username.value == ""){
+            document.getElementById("userError").innerHTML = "user Name is empty";
+            flag =0;
+            }else if(username.value.length<3){
+                document.getElementById("userError").innerHTML = "user Name required min 3 char";
+                flag=0;
+            }
+            else{
+                document.getElementById("userError").innerHTML="";
+                flag =1;
+            }
+
+            if (password.value == "") {
+                document.getElementById("passError").innerHTML = "Password is empty";
+                flag=0;
+            }
+            else{
+                document.getElementById("passError").innerHTML="";
+                flag=1;
+            }
+            if(flag){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+            return false;
+        } 
+ </script>
+</body>
+</html>
